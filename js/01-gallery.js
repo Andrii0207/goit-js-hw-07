@@ -9,15 +9,18 @@ const galleryEl = document.querySelector('.gallery');
 function onCreateListImages(galleryItems) {
   // return galleryItems
   //   .map(
-  //     item => `<div class="gallery__item">
-  //     <a class="gallery__link" href = "${item.original}">
-  //     <img class="gallery__image" src="${item.preview}"
-  //     data-source="${item.original}"
-  //     alt="${item.description}"/>
-  //     </a>
+  //     item =>
+  //       `<div class="gallery__item">
+  //       <a class="gallery__link" href="${img.original}">
+  //         <img class="gallery__image"
+  //         src="${img.preview}"
+  //         data-source="${img.original}"
+  //         alt="${img.description}"/>
+  //       </a>
   //     </div>`,
   //   )
   //   .join('');
+
   return galleryItems.reduce(
     (acc, img) =>
       acc +
@@ -34,18 +37,33 @@ function onCreateListImages(galleryItems) {
 }
 
 const onCreateGallery = onCreateListImages(galleryItems);
-// console.log(onCreateGallery);
 
 galleryEl.innerHTML = onCreateGallery;
 
-galleryEl.addEventListener('click', openModal);
+galleryEl.addEventListener('click', onOpenModal);
 
-function openModal(event) {
+function onOpenModal(event) {
   event.preventDefault();
 
   if (!event.target.classList.contains('gallery__image')) {
     return console.log('Its not a picture');
   }
   const originalSizeImg = event.target.dataset.source;
-  basicLightbox.create(`<img src="${originalSizeImg}">`).show();
+  const instance = basicLightbox.create(`<img src="${originalSizeImg}"/>`);
+  instance.show();
+
+  window.addEventListener('keydown', onEscClick);
+
+  function onEscClick(event) {
+    console.log(event.currentTarget);
+
+    if (event.code === 'Escape') {
+      instance.close();
+    }
+  }
 }
+
+// OnShow () => window.addEventListener('keydown', onEscClick)
+// OnClose () => window.removeEventListener('keydown', onEscClick)
+
+// window.addEventListener(, onCloseModal);
