@@ -21,8 +21,14 @@ function onCreateListImages(galleryItems) {
   return galleryItems.reduce(
     (acc, img) =>
       acc +
-      `<div class="gallery"><a class="gallery__link" href="${img.original}">
-      <img class="gallery__image" src="${img.preview}" alt="${img.description}" data-source="${img.original}"/></a></div>`,
+      `<div class="gallery__item">
+        <a class="gallery__link" href="${img.original}">
+          <img class="gallery__image"
+          src="${img.preview}" 
+          data-source="${img.original}" 
+          alt="${img.description}"/>
+        </a>
+      </div>`,
     '',
   );
 }
