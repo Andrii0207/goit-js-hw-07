@@ -55,8 +55,6 @@ function onOpenModal(event) {
   window.addEventListener('keydown', onEscClick);
 
   function onEscClick(event) {
-    console.log(event.currentTarget);
-
     if (event.code === 'Escape') {
       instance.close();
     }
