@@ -60,8 +60,3 @@ function onOpenModal(event) {
     }
   }
 }
-
-// OnShow () => window.addEventListener('keydown', onEscClick)
-// OnClose () => window.removeEventListener('keydown', onEscClick)
-
-// window.addEventListener(, onCloseModal);
