@@ -45,7 +45,7 @@ galleryEl.addEventListener('click', onOpenModal);
 function onOpenModal(event) {
   event.preventDefault();
 
-  if (!event.target.classList.contains('gallery__image')) {
+  if (event.target.nodeName !== 'IMG') {
     return console.log('Its not a picture');
   }
   const originalSizeImg = event.target.dataset.source;
